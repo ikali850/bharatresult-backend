@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Messages - Bharatresult</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="/admin/dashboard"> <img class="m-1" src="/assets/img/mylogo-trans.png" alt=""
+                width="200" height="50">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+
+    </nav>
+    <div id="layoutSidenav">
+        <div th:replace="fragments :: header"></div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h2 class="mt-4 pb-2" style="border-bottom: 2px solid;">Manage Messages</h2>
+                    <ol class="breadcrumb mb-4 bg-light p-3 fw-large">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Messages</li>
+                    </ol>
+                    <div th:if="${eventMsg}" class="alert alert-success alert-dismissible fade show" role="alert">
+                        <span th:text="${eventMsg}"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div>
+                                <i class="fas fa-table me-1"></i>
+                                Messages
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table id="post-data" class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th title="Field #1">ID</th>
+                                        <th title="Field #2">First Name</th>
+                                        <th title="Field #3">Last Name</th>
+                                        <th title="Field #4">Email</th>
+                                        <th title="Field #5">Message</th>
+                                        <th title="Field #6">Date</th>
+                                        <th title="Field #7">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="message : ${messages}">
+                                        <td align="right" th:text="${message.id}"></td>
+                                        <td th:text="${message.fname}"></td>
+                                        <td th:text="${message.lName}"></td>
+                                        <td th:text="${message.email}"></td>
+                                        <td th:text="${message.message}"></td>
+                                        <td th:text="${message.createdAt}"></td>
+                                        <td>
+                                            <a class="btn btn-danger m-1"
+                                                th:href="@{/admin/message/delete/{id}(id=${message.id})}"
+                                                role="button">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>
