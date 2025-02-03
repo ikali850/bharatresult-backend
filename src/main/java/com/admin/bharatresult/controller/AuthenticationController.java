@@ -56,8 +56,8 @@ public class AuthenticationController {
                 return mv;
             }
         }
-        ModelAndView mv = new ModelAndView(new RedirectView("/admin/signin"));
         redirectAttributes.addFlashAttribute("errorMsg", "Email or Password is Wrong!");
+        ModelAndView mv = new ModelAndView(new RedirectView("/admin/signin"));
         return mv;
     }
 

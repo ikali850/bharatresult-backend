@@ -39,6 +39,9 @@ public class Post {
     @Column(nullable = false, unique = true)
     private String postUrl;
 
+    @Column(nullable = true)
+    private String updateMsg;
+
     @Column(nullable = false, unique = false, columnDefinition = "TEXT")
     private String category;
 

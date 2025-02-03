@@ -14,6 +14,11 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepo;
 
+    public boolean saveMessage(Messages message){
+        this.messageRepo.save(message);
+        return true;
+    }
+
     public List<Messages> getAllMessages() {
         return this.messageRepo.findAll();
     }

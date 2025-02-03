@@ -2,9 +2,14 @@ package com.admin.bharatresult.controller;
 
 import java.util.List;
 
+import org.aspectj.bridge.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,10 +28,15 @@ public class MesssageController {
     @Autowired
     private MessageService messageService;
 
+    @PostMapping("/message")
+    public ResponseEntity saveMessage(@RequestBody Messages messageData) {
+        this.messageService.saveMessage(messageData);
+        return new ResponseEntity<>(HttpStatusCode.valueOf(200));
+    }
+
     @GetMapping("/admin/messages")
     public ModelAndView getMessages() {
         List<Messages> allMessages = this.messageService.getAllMessages();
-        System.out.println(allMessages);
         ModelAndView mv = new ModelAndView("messages");
         mv.addObject("messages", allMessages);
         return mv;
