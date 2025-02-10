@@ -39,7 +39,6 @@ public class CategoryController {
             redirectAttributes.addFlashAttribute("eventMsg", "Category Added..");
             return new ModelAndView(new RedirectView("/admin/category"));
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
             redirectAttributes.addFlashAttribute("errorMsg", "Duplicate Category..");
             return new ModelAndView(new RedirectView("/admin/category"));
         }

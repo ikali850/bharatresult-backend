@@ -114,7 +114,7 @@ public class PostController {
             // Toggle the publish status
             boolean newStatus = !post.isPublish(); // If it's true, set it to false and vice versa
             post.setPublish(newStatus);
-            System.out.println(post.isPublish());
+            
             // Save the updated post
             this.postService.savePost(post, post.getUser());
 

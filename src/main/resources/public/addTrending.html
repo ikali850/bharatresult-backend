@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Trending Post - Bharatresult</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="/admin/dashboard"> <img class="m-1" src="/assets/img/mylogo-trans.png" alt=""
+                width="200" height="50">
+        </a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+
+    </nav>
+    <div id="layoutSidenav">
+        <div th:replace="fragments :: header"></div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h2 class="mt-4 pb-2" style="border-bottom: 2px solid;">Posts Management</h2>
+                    <ol class="breadcrumb mb-4 bg-light p-3 fw-large">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Trending Post</li>
+                    </ol>
+                    <div th:if="${eventMsg}" class="alert alert-success alert-dismissible fade show" role="alert">
+                        <span th:text="${eventMsg}"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div th:if="${errorMsg}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <span th:text="${errorMsg}"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div>
+                                <i class="fas fa-table me-1"></i>
+                                Post
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="/admin/trending/post" method="POST">
+                                <div class="accordion" id="accordionExample">
+                                    <!-- Post 1 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Post 1
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name1">Post Name</label>
+                                                    <input type="text" class="form-control" id="name1" name="name[]" 
+                                                           th:value="${posts[0].name != null ? posts[0].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url1">Post URL</label>
+                                                    <input type="url" class="form-control" id="url1" name="url[]" 
+                                                           th:value="${posts[0].url != null ? posts[0].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 2 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Post 2
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name2">Post Name</label>
+                                                    <input type="text" class="form-control" id="name2" name="name[]" 
+                                                           th:value="${posts[1].name != null ? posts[1].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url2">Post URL</label>
+                                                    <input type="url" class="form-control" id="url2" name="url[]" 
+                                                           th:value="${posts[1].url != null ? posts[1].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 3 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Post 3
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name3">Post Name</label>
+                                                    <input type="text" class="form-control" id="name3" name="name[]" 
+                                                           th:value="${posts[2].name != null ? posts[2].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url3">Post URL</label>
+                                                    <input type="url" class="form-control" id="url3" name="url[]" 
+                                                           th:value="${posts[2].url != null ? posts[2].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 4 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFour">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                Post 4
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name4">Post Name</label>
+                                                    <input type="text" class="form-control" id="name4" name="name[]" 
+                                                           th:value="${posts[3].name != null ? posts[3].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url4">Post URL</label>
+                                                    <input type="url" class="form-control" id="url4" name="url[]" 
+                                                           th:value="${posts[3].url != null ? posts[3].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 5 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFive">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                Post 5
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name5">Post Name</label>
+                                                    <input type="text" class="form-control" id="name5" name="name[]" 
+                                                           th:value="${posts[4].name != null ? posts[4].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url5">Post URL</label>
+                                                    <input type="url" class="form-control" id="url5" name="url[]" 
+                                                           th:value="${posts[4].url != null ? posts[4].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 6 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingSix">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                                Post 6
+                                            </button>
+                                        </h2>
+                                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name6">Post Name</label>
+                                                    <input type="text" class="form-control" id="name6" name="name[]" 
+                                                           th:value="${posts[5].name != null ? posts[5].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url6">Post URL</label>
+                                                    <input type="url" class="form-control" id="url6" name="url[]" 
+                                                           th:value="${posts[5].url != null ? posts[5].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 7 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingSeven">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                                Post 7
+                                            </button>
+                                        </h2>
+                                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name7">Post Name</label>
+                                                    <input type="text" class="form-control" id="name7" name="name[]" 
+                                                           th:value="${posts[6].name != null ? posts[6].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url7">Post URL</label>
+                                                    <input type="url" class="form-control" id="url7" name="url[]" 
+                                                           th:value="${posts[6].url != null ? posts[6].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 8 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingEight">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                                Post 8
+                                            </button>
+                                        </h2>
+                                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name8">Post Name</label>
+                                                    <input type="text" class="form-control" id="name8" name="name[]" 
+                                                           th:value="${posts[7].name != null ? posts[7].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url8">Post URL</label>
+                                                    <input type="url" class="form-control" id="url8" name="url[]" 
+                                                           th:value="${posts[7].url != null ? posts[7].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Post 9 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingNine">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                                Post 9
+                                            </button>
+                                        </h2>
+                                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <div class="form-group">
+                                                    <label for="name9">Post Name</label>
+                                                    <input type="text" class="form-control" id="name9" name="name[]" 
+                                                           th:value="${posts[8].name != null ? posts[8].name : ''}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="url9">Post URL</label>
+                                                    <input type="url" class="form-control" id="url9" name="url[]" 
+                                                           th:value="${posts[8].url != null ? posts[8].url : ''}" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Submit Button -->
+                                    <div class="form-group mt-3">
+                                        <button type="submit" class="btn btn-primary">Submit Posts</button>
+                                    </div>
+                                </div>
+                            </form>                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
+</body>
+
+</html>

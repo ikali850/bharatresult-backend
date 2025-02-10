@@ -28,12 +28,6 @@ public class MesssageController {
     @Autowired
     private MessageService messageService;
 
-    @PostMapping("/message")
-    public ResponseEntity saveMessage(@RequestBody Messages messageData) {
-        this.messageService.saveMessage(messageData);
-        return new ResponseEntity<>(HttpStatusCode.valueOf(200));
-    }
-
     @GetMapping("/admin/messages")
     public ModelAndView getMessages() {
         List<Messages> allMessages = this.messageService.getAllMessages();

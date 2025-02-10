@@ -62,8 +62,8 @@
                                     <!-- Post Id -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="id" name="id" placeholder="Post ID#"
-                                                   th:value="${post.id}" required>
+                                            <input type="text" class="form-control" id="id" name="id"
+                                                placeholder="Post ID#" th:value="${post.id}" required readonly>
                                             <label for="fullTitle">Post ID#</label>
                                         </div>
                                     </div>
@@ -71,47 +71,48 @@
                                     <!-- Full Title -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="fullTitle" name="fullTitle" placeholder="Full Title"
-                                                   th:value="${post.fullTitle}" required>
+                                            <input type="text" class="form-control" id="fullTitle" name="fullTitle"
+                                                placeholder="Full Title" th:value="${post.fullTitle}" required>
                                             <label for="fullTitle">Full Title</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Title -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="title" name="shortTitle" placeholder="Title"
-                                                   th:value="${post.shortTitle}" required>
+                                            <input type="text" class="form-control" id="title" name="shortTitle"
+                                                placeholder="Title" th:value="${post.shortTitle}" required>
                                             <label for="title">Title</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Slug -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="url-slug" name="postUrl" placeholder="URL Slug"
-                                                   th:value="${post.postUrl}">
+                                            <input type="text" class="form-control" id="url-slug" name="postUrl"
+                                                placeholder="URL Slug" th:value="${post.postUrl}" required>
                                             <label for="url-slug">URL Slug</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Categories -->
                                     <div class="mb-3">
                                         <label class="form-label ml-2"><strong>Category:</strong></label>
                                         <br>
                                         <div th:each="category : ${categories}" class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" th:id="${category.name}" th:name="category"
-                                                   th:value="${category.name}" 
-                                                   th:checked="${post.category != null && post.category.contains(category.name)}">
-                                            <label class="form-check-label" th:for="${category.name}" th:text="${category.name}"></label>
+                                            <input class="form-check-input" type="checkbox" th:id="${category.name}"
+                                                th:name="category" th:value="${category.name}"
+                                                th:checked="${post.category != null && post.category.contains(category.name)}">
+                                            <label class="form-check-label" th:for="${category.name}"
+                                                th:text="${category.name}"></label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Date -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="date" name="date" placeholder="Date"
-                                                   th:value="${post.createdDate}">
+                                            <input type="text" class="form-control" id="date" name="date"
+                                                placeholder="Date" th:value="${post.createdDate}" required>
                                             <label for="date">Date</label>
                                         </div>
                                     </div>
@@ -119,117 +120,123 @@
                                     <!-- update -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="update" name="updateMsg" placeholder="Update"
-                                                   th:value="${post.updateMsg}">
+                                            <input type="text" class="form-control" id="update" name="updateMsg"
+                                                placeholder="Update" th:value="${post.updateMsg}">
                                             <label for="update">Update Remark</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Content -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <textarea class="form-control" id="contentData" name="content" placeholder="Content" style="height: 400px;" required
-                                                      th:text="${post.content}"></textarea>
+                                            <textarea class="form-control" id="contentData" name="content"
+                                                placeholder="Content" style="height: 400px;" required
+                                                th:text="${post.content}"></textarea>
                                             <label for="content">Content</label>
                                         </div>
                                     </div>
                                 </div>
-                            
                                 <!-- If post is not received, leave the fields empty -->
                                 <div th:unless="${post != null}">
                                     <!-- Full Title -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="fullTitle" name="fullTitle" placeholder="Full Title" required>
+                                            <input type="text" class="form-control" id="fullTitle" name="fullTitle"
+                                                placeholder="Full Title" required>
                                             <label for="fullTitle">Full Title</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Title -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="title" name="shortTitle" placeholder="Title" required>
-                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" id="title" name="shortTitle"
+                                                placeholder="Title" required>
+                                            <label for="title">Short Title</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Slug -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="url-slug" name="postUrl" placeholder="URL Slug">
+                                            <input type="text" class="form-control" id="url-slug" name="postUrl"
+                                                placeholder="URL Slug" required>
                                             <label for="url-slug">URL Slug</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Categories -->
                                     <div class="mb-3">
                                         <label class="form-label ml-2"><strong>Category:</strong></label>
                                         <br>
                                         <div th:each="category : ${categories}" class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" th:id="${category.name}" th:name="category"
-                                                   th:value="${category.name}">
-                                            <label class="form-check-label" th:for="${category.name}" th:text="${category.name}"></label>
+                                            <input class="form-check-input" type="checkbox" th:id="${category.name}"
+                                                th:name="category" th:value="${category.name}">
+                                            <label class="form-check-label" th:for="${category.name}"
+                                                th:text="${category.name}"></label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Date -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" id="date" name="date" placeholder="Date">
-                                            <label for="date">Date</label>
+                                            <input type="text" class="form-control" id="date" name="createdDate"
+                                                placeholder="Date(dd-mm-yyyy)" required>
+                                            <label for="date">Date(dd-mm-yyyy)</label>
                                         </div>
                                     </div>
-                            
+
                                     <!-- Content -->
                                     <div class="mb-3">
                                         <div class="form-floating">
-                                            <textarea class="form-control" id="contentData" name="content" placeholder="Content" style="height: 400px;" required></textarea>
+                                            <textarea class="form-control" id="contentData" name="content"
+                                                placeholder="Content" style="height: 400px;" required></textarea>
                                             <label for="content">Content</label>
                                         </div>
                                     </div>
                                 </div>
-                            
                                 <!-- Buttons -->
                                 <div class="d-flex justify-content-end mt-4">
-                                    <button type="button" id="previewButton" class="btn btn-secondary me-2 previewButton">Preview</button>
+                                    <button type="button" id="previewButton"
+                                        class="btn btn-secondary me-2 previewButton">Preview</button>
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
                 <!-- modal for update Post -->
-                <div class="modal model-lg fade" id="updatePostModal" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Post</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container mt-2">
-                                <form action="/admin/blog/update" method="get">
-                                    <!-- Name -->
-                                    <div class="mb-3">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="floatingName"
-                                                name="postId" placeholder="Post Id" required>
-                                            <label for="floatingName">
-                                                <i class="bi bi-person"></i> Post Id
-                                            </label>
+                <div class="modal model-lg fade" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Post</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container mt-2">
+                                    <form action="/admin/blog/update" method="get">
+                                        <!-- Name -->
+                                        <div class="mb-3">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="floatingName" name="postId"
+                                                    placeholder="Post Id" required>
+                                                <label for="floatingName">
+                                                    <i class="bi bi-person"></i> Post Id
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- Submit Button -->
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
+                                        <!-- Submit Button -->
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
                 <div class="container">
                     <!-- Preview Modal -->
                     <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="exampleModalLabel"

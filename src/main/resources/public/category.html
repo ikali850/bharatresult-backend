@@ -102,7 +102,9 @@
                                                 <div class="mb-3">
                                                     <div class="form-floating">
                                                         <input type="text" class="form-control" id="floatingName"
-                                                            name="name" placeholder="Name" required>
+                                                            name="name" placeholder="Name" maxlength="20" required
+                                                            pattern="^[A-Za-z\s]+$"
+                                                            title="Name can only contain letters and spaces, and must be no longer than 20 characters.">
                                                         <label for="floatingName">
                                                             <i class="bi bi-person"></i> Name
                                                         </label>
@@ -135,25 +137,31 @@
                                                 <div class="mb-3">
                                                     <div class="form-floating">
                                                         <input type="text" class="form-control" id="floatingId"
-                                                            name="id" placeholder="Id" required>
+                                                            name="id" placeholder="Id" required pattern="^[0-9]+$"
+                                                            title="Only numbers are allowed for the ID.">
                                                         <label for="floatingId">
                                                             <i class="bi bi-person"></i> Id
                                                         </label>
                                                     </div>
                                                 </div>
+
                                                 <!-- Name -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
                                                         <input type="text" class="form-control" id="floatingName"
-                                                            name="name" placeholder="Name" required>
+                                                            name="name" placeholder="Name" maxlength="20" required
+                                                            pattern="^[A-Za-z\s]+$"
+                                                            title="Name can only contain letters and spaces, and must be no longer than 20 characters.">
                                                         <label for="floatingName">
                                                             <i class="bi bi-person"></i> Name
                                                         </label>
                                                     </div>
                                                 </div>
+
                                                 <!-- Submit Button -->
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>

@@ -53,7 +53,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="datatablesSimple" class="table table-bordered table align-middle table-responsive">
+                            <table id="datatablesSimple"
+                                class="table table-bordered table align-middle table-responsive">
                                 <thead>
                                     <tr>
                                         <th title="Field #1">ID</th>
@@ -81,8 +82,7 @@
                                             <a class="btn btn-primary m-1" href="#" role="button" data-bs-toggle="modal"
                                                 data-bs-target="#updateUserModal"><i class="fa-solid fa-pen"></i></a>
                                             <a class="btn btn-danger m-1"
-                                                th:href="@{/admin/user/delete/{id}(id=${user.id})}"
-                                                role="button">
+                                                th:href="@{/admin/user/delete/{id}(id=${user.id})}" role="button">
                                                 <i class="fa-solid fa-trash"></i>
                                             </a>
                                         </td>
@@ -109,8 +109,7 @@
                                                 <!-- Name -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="text" class="form-control" id="floatingName"
-                                                            name="name" placeholder="Name" required>
+                                                        <input type="text" class="form-control" id="floatingName" name="name" placeholder="Name" required minlength="3" maxlength="50">
                                                         <label for="floatingName">
                                                             <i class="bi bi-person"></i> Name
                                                         </label>
@@ -119,8 +118,7 @@
                                                 <!-- Email -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="email" class="form-control" id="floatingEmail"
-                                                            name="email" placeholder="Email" required>
+                                                        <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="Email" required>
                                                         <label for="floatingEmail">
                                                             <i class="bi bi-envelope"></i> Email address
                                                         </label>
@@ -129,8 +127,7 @@
                                                 <!-- Mobile Number -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="tel" class="form-control" id="floatingMobile"
-                                                            name="mobile" placeholder="Mobile Number" required>
+                                                        <input type="tel" class="form-control" id="floatingMobile" name="mobile" placeholder="Mobile Number" required pattern="^\d{10}$" title="Please enter a valid 10-digit mobile number">
                                                         <label for="floatingMobile">
                                                             <i class="bi bi-phone"></i> Mobile Number
                                                         </label>
@@ -139,9 +136,7 @@
                                                 <!-- Password -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="password" class="form-control"
-                                                            id="floatingPassword" name="password" placeholder="Password"
-                                                            required>
+                                                        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required minlength="5" title="Password must be at least 8 characters long">
                                                         <label for="floatingPassword">
                                                             <i class="bi bi-lock"></i> Password
                                                         </label>
@@ -150,8 +145,7 @@
                                                 <!-- Date of Birth -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="date" class="form-control" id="floatingDOB"
-                                                            name="dob" placeholder="Date of Birth" required>
+                                                        <input type="date" class="form-control" id="floatingDOB" name="dob" placeholder="Date of Birth" required>
                                                         <label for="floatingDOB">
                                                             <i class="bi bi-calendar-date"></i> Date of Birth
                                                         </label>
@@ -160,6 +154,7 @@
                                                 <!-- Submit Button -->
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -184,9 +179,8 @@
                                                 <!-- ID -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="text" class="form-control" id="floatingName"
-                                                            name="id" placeholder="#ID" required>
-                                                        <label for="floatingName">
+                                                        <input type="text" class="form-control" id="floatingID" name="id" placeholder="#ID" required pattern="^\d+$" title="Please enter a valid numeric ID">
+                                                        <label for="floatingID">
                                                             <i class="bi bi-number"></i> User ID
                                                         </label>
                                                     </div>
@@ -194,8 +188,7 @@
                                                 <!-- Name -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="text" class="form-control" id="floatingName"
-                                                            name="name" placeholder="Name" required>
+                                                        <input type="text" class="form-control" id="floatingName" name="name" placeholder="Name" required minlength="3" maxlength="50">
                                                         <label for="floatingName">
                                                             <i class="bi bi-person"></i> Name
                                                         </label>
@@ -204,8 +197,7 @@
                                                 <!-- Email -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="email" class="form-control" id="floatingEmail"
-                                                            name="email" placeholder="Email" required>
+                                                        <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="Email" required>
                                                         <label for="floatingEmail">
                                                             <i class="bi bi-envelope"></i> Email address
                                                         </label>
@@ -214,8 +206,7 @@
                                                 <!-- Mobile Number -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="tel" class="form-control" id="floatingMobile"
-                                                            name="mobile" placeholder="Mobile Number" required>
+                                                        <input type="tel" class="form-control" id="floatingMobile" name="mobile" placeholder="Mobile Number" required pattern="^\d{10}$" title="Please enter a valid 10-digit mobile number">
                                                         <label for="floatingMobile">
                                                             <i class="bi bi-phone"></i> Mobile Number
                                                         </label>
@@ -224,9 +215,7 @@
                                                 <!-- Password -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="password" class="form-control"
-                                                            id="floatingPassword" name="password" placeholder="Password"
-                                                            required>
+                                                        <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required minlength="5" title="Password must be at least 5 characters long">
                                                         <label for="floatingPassword">
                                                             <i class="bi bi-lock"></i> Password
                                                         </label>
@@ -235,8 +224,7 @@
                                                 <!-- Date of Birth -->
                                                 <div class="mb-3">
                                                     <div class="form-floating">
-                                                        <input type="date" class="form-control" id="floatingDOB"
-                                                            name="dob" placeholder="Date of Birth" required>
+                                                        <input type="date" class="form-control" id="floatingDOB" name="dob" placeholder="Date of Birth" required>
                                                         <label for="floatingDOB">
                                                             <i class="bi bi-calendar-date"></i> Date of Birth
                                                         </label>
@@ -245,6 +233,7 @@
                                                 <!-- Submit Button -->
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
+                                            
                                         </div>
                                     </div>
                                 </div>

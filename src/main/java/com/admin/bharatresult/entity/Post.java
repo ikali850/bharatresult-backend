@@ -52,16 +52,12 @@ public class Post {
     private boolean isPublish = false;
     private long likes, views, shares;
     @Column(name = "created_date", updatable = false)
-    private LocalDateTime createdDate;
+    private String createdDate;
 
     @Column(name = "updated_date")
     private LocalDateTime updatedDate;
 
-    @PrePersist
-    public void prePersist() {
-        this.createdDate = LocalDateTime.now();
-    }
-
+    
     @PreUpdate
     public void preUpdate() {
         this.updatedDate = LocalDateTime.now();

@@ -28,7 +28,7 @@ public class HomeContoller {
 	@Autowired
 	private CategoryService categoryService;
 
-	@GetMapping("/")
+	@GetMapping("/admin")
 	public ModelAndView homePage() {
 		return new ModelAndView("login", HttpStatus.OK);
 	}
@@ -48,7 +48,7 @@ public class HomeContoller {
 			mv.addObject("user", user);
 			mv.addObject("posts", allPosts);
 			mv.addObject("categories", categories);
-			mv.setViewName("index");
+			mv.setViewName("home");
 			return mv;
 		}
 
